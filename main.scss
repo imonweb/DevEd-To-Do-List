@@ -5,5 +5,42 @@
 }
 
 body {
-  background-color: salmon;
+  background-image: linear-gradient(120deg, #f6d365, #fda085);
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+}
+
+header {
+  font-size: 1.5rem;
+}
+
+header, form {
+  min-height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+
+  input, button {
+    padding: 0.5rem;
+    font-size: 2rem;
+    border: none;
+    background: #fff;
+  }
+
+  button {
+    color: #d88771;
+    background: #fff;
+    cursor: pointer;
+    transition: all 0.3ss ease;
+
+    &:hover {
+      background: #d88771;
+      color: #fff;
+    }
+  }
+  
 }
