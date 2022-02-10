@@ -1,34 +1,51 @@
-// selectors
+// Selectors
 const todoInput = document.querySelector('.todo-input');
 const todoButton = document.querySelector('.todo-button');
 const todoList = document.querySelector('.todo-list');
 
-// Event Listener
+// Event Listeners
 todoButton.addEventListener('click', addTodo);
+todoList.addEventListener('click', deleteCheck);
 
-// Function
+// Functions
 function addTodo(event){
   event.preventDefault();
-  //Todo Div
-  const todoDiv = document.createElement("div");
-  todoDiv.classList.add("todo");
-  //Create LI
+  // Todo Div
+  const todoDiv = document.createElement('div');
+  todoDiv.classList.add('todo');
+  // Create LI
   const newTodo = document.createElement('li');
-  newTodo.innerText = 'hey';
+  newTodo.innerText = todoInput.value;
   newTodo.classList.add('todo-item');
   todoDiv.appendChild(newTodo);
-  //Check mark button
+  // Check mark button
   const completedButton = document.createElement('button');
-  completedButton.innerText - `<i class="fas fa-check"></i>`;
-  completedButton.classList.add('complete-btn');
+  completedButton.innerHTML = '<i class="fas fa-check"></i>';
+  completedButton.classList.add("complete-btn");
   todoDiv.appendChild(completedButton);
-  //Check trash button
+  // Check trash button
   const trashButton = document.createElement('button');
-  trashButton.innerText - `<i class="fas fa-trash"></i>`;
-  trashButton.classList.add('complete-btn');
+  trashButton.innerHTML = '<i class="fas fa-trash"></i>';
+  trashButton.classList.add("trash-btn");
   todoDiv.appendChild(trashButton);
-
-  //Append to List
+  // Append to list
   todoList.appendChild(todoDiv);
+  // Clear todoInput value
+  todoInput.value = "";
 }
 
+function deleteCheck(e){
+  // console.log(e.target);
+  const item = e.target;
+  // Delete
+  if(item.classList[0] === 'trash-btn'){
+    const todo = item.parentElement;
+    todo.remove();
+  }
+
+  // Check mark
+  if(item.classList[0] === 'complete-btn'){
+    const todo = item.parentElement;
+    todo.classList.toggle('completed');
+  }
+}
